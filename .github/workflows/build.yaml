@@ -8,27 +8,27 @@ on:
   workflow_dispatch:
     input: 
 
-  jobs: 
-    ts-build: 
-      runs-on: ubuntu-latest
-      steps: 
-        - name: Checkout
-          uses: actions/checkout@v2
-          with: 
-            token ${{ secrets.ACCESS_TOKEN }}
-        - name: Setup node.js
-          uses: actions/setup-node@v2.1.4
-          with: 
-            node-version: 10
-        - name: Build TS
-          run: |
-            npm install
-            npm run build
+jobs: 
+  ts-build: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v2
+        with: 
+          token ${{ secrets.ACCESS_TOKEN }}
+      - name: Setup node.js
+        uses: actions/setup-node@v2.1.4
+        with: 
+          node-version: 10
+      - name: Build TS
+        run: |
+          npm install
+          npm run build
 
-        - name: Deploy to dist-branch
-          uses: JamesIves/github-pages-deploy-action@3.7.1
-          with: 
-            GITHUB_TOKEN: ${{ secrests.ACCESS_TOKEN }}
-            BRANCH: dist
-            FOLDER: dist
-            CLEAN: true
+      - name: Deploy to dist-branch
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with: 
+          GITHUB_TOKEN: ${{ secrests.ACCESS_TOKEN }}
+          BRANCH: dist
+          FOLDER: dist
+          CLEAN: true
