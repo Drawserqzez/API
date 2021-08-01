@@ -23,7 +23,7 @@ jobs:
       - name: Build TS
         run: |
           npm install
-          npm run build
+          npm run build-ts
 
       - name: Enable Heroku deploy
         run: cp package.json ./dist/package.json
